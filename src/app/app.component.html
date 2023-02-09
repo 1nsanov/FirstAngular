@@ -1,9 +1,17 @@
-<div class="max-w-2xl container mx-auto pt-5">
-  <p class="font-bold md-2 text-center">{{ title | titlecase }}</p>
-  <app-product
-    *ngFor="let product of products; let i = index"
-    [product]="product"
-  />
+<nav class="absolute top-0 right-0 left-0 h-[50px] flex justify-between items-center text-white bg-gray-500">
+  <h1 class="font-bold">Angular App</h1>
+
+  <span>
+    <a routerLink="/" class="mr-2 text-white">Product</a>
+    <a routerLink="/about" class="mr-2 text-white">About</a>
+  </span>
+</nav>
+
+<div class="max-w-2xl container mx-auto mt-16">
+
+
+
+  <router-outlet></router-outlet>
 </div>
 
 

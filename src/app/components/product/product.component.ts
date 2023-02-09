@@ -8,4 +8,11 @@ import {IProduct} from "../../models/Product";
 })
 export class ProductComponent {
   @Input() product: IProduct
+
+  isShow: boolean = false;
+
+  onClickButton () {
+    console.log("1")
+    this.isShow = !this.isShow;
+  }
 }

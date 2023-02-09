@@ -11,8 +11,6 @@ export class ProductService {
   }
 
   getAll () : Observable<IProduct[]> {
-    return this.http.get<IProduct[]>('https://fakestoreapi.com/products').pipe(
-      delay(200)
-    )
+    return this.http.get<IProduct[]>('https://fakestoreapi.com/products')
   }
 }
