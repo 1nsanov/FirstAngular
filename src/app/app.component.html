@@ -1,0 +1,11 @@
+<div class="max-w-2xl container mx-auto pt-5">
+  <p class="font-bold md-2 text-center">{{ title | titlecase }}</p>
+  <app-product
+    *ngFor="let product of products; let i = index"
+    [product]="product"
+  />
+</div>
+
+
+
+
