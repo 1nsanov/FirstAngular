@@ -1,0 +1,19 @@
+<p class="font-bold md-2 text-center">{{ title | titlecase }}</p>
+<div class="flex justify-center mb-3 mt-3">
+  <app-input [(value)]="valueSearch"/>
+</div>
+Value: {{valueSearch}}
+<div>
+  <app-button (click)="modalService.open()">open modal</app-button>
+</div>
+<h2 class="font-bold text-center" *ngIf="isLoad">Loading...</h2>
+<div *ngIf="!isLoad">
+  <app-product
+    *ngFor="let product of products | filterProducts: valueSearch; let i = index"
+    [product]="product"
+  />
+</div>
+
+<app-modal *ngIf="modalService.isVisible$.value" [title]="'Title'">
+  <app-button (click)="modalService.close()">close</app-button>
+</app-modal>
