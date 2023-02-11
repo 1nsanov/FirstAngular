@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import {IProduct} from "../../models/Product";
+import {IProduct} from "../../api/models/product/Product";
 import {ProductService} from "../../services/product.service";
 import {ModalService} from "../../services/modal.service";
+import {ProductApiService} from "../../api/services/product.api.service";
 
 @Component({
   selector: 'app-product-page',
@@ -15,14 +16,23 @@ export class ProductPageComponent {
   isLoad: boolean = false;
   valueSearch: string = "";
 
-  constructor(private productService: ProductService, public modalService: ModalService) {
+  constructor(
+    private productService: ProductService,
+    public modalService: ModalService,
+    private productApiService: ProductApiService) {
   }
 
   ngOnInit(): void {
     this.switchLoad()
-    this.productService.getAll().subscribe(res => {
+
+    this.productApiService.getAll().subscribe(res => {
       this.products = res;
       this.switchLoad()
+    })
+
+    this.productApiService.getById(1).subscribe(res => {
+      console.log("productApiService.getById")
+      console.log(res)
     })
   }
 
