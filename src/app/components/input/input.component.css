@@ -1,0 +1,33 @@
+.input-base{
+  /* White */
+  background: #F9F9F9;
+  /* Black */
+  border: 2px solid #1E1E1E;
+  border-radius: 12px;
+  height: 40px;
+  width: 240px;
+  font-size: 14px;
+  padding: 0 20px;
+  font-weight: 500;
+  color: #1E1E1E;
+}
+
+.input-base::placeholder{
+  color: #8C8C8C;
+}
+
+.input_wrapper{
+  position: relative;
+}
+
+.input-label{
+  position: absolute;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  background: #F9F9F9;
+  padding: 0 8px;
+  top: -10px;
+  left: 14px;
+}

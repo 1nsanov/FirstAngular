@@ -1,6 +1,7 @@
 <p class="font-bold md-2 text-center">{{ title | titlecase }}</p>
 <div class="flex justify-center mb-3 mt-3">
-  <app-input [(value)]="valueSearch"/>
+  <app-input [(value)]="valueSearch" [placeholder]="'Поиск...'" [label]="'Заголовок'"/>
+  <app-input [(value)]="valueSearch" [placeholder]="'Поиск...'" />
 </div>
 Value: {{valueSearch}}
 <div>

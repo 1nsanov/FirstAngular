@@ -1,11 +1,13 @@
-<div>
+<div class="input_wrapper">
+  <div class="input-label">
+    {{label}}
+  </div>
   <input
-    class="p-2 w-72 bg-amber-50 border-b-black"
-    style="border-radius: 8px; border: 2px solid"
+    class="input-base"
     type="text"
     [value]="value"
     (input)="onInput($event)"
-    appFocus
+    [placeholder]="placeholder"
   >
 </div>
 
