@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {delay, Observable} from "rxjs";
-import {IProduct} from "../models/Product";
+import {IProduct} from "../api/models/product/Product";
 
 @Injectable({
   providedIn: 'root'

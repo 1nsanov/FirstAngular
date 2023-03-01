@@ -1,4 +1,4 @@
-import {IProduct} from "../models/Product";
+import {IProduct} from "../api/models/product/Product";
 
 export let product: IProduct[];
 product = [
