@@ -7,17 +7,27 @@
   height: 40px;
   width: 240px;
   font-size: 14px;
-  padding: 0 20px;
+  padding-right: 20px;
   font-weight: 500;
   color: #1E1E1E;
+  transition: ease-in-out 0.2s;
 }
 
 .input-base::placeholder{
   color: #8C8C8C;
 }
 
+.input-base:focus {
+  border-color: #B6E5EE;
+}
+
 .input_wrapper{
   position: relative;
+  .input-icon{
+    position: absolute;
+    top: 26%;
+    left: 20px;
+  }
 }
 
 .input-label{
@@ -28,6 +38,6 @@
   text-align: center;
   background: #F9F9F9;
   padding: 0 8px;
-  top: -10px;
+  top: -12px;
   left: 14px;
 }

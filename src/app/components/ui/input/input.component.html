@@ -2,12 +2,17 @@
   <div class="input-label">
     {{label}}
   </div>
+  <div [innerHTML]="svg" class="input-icon">
+  </div>
   <input
     class="input-base"
+    [style]="{'padding-left': svg ? '45px' : '20px'}"
     type="text"
     [value]="value"
     (input)="onInput($event)"
     [placeholder]="placeholder"
+    (focus)="changeColorSvg(colorFocus)"
+    (blur)="changeColorSvg(colorBlur)"
   >
 </div>
 
