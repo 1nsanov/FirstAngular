@@ -19,6 +19,7 @@ Value: {{valueSearch}}
 
 <div>
   <app-button (click)="modalService.open()">open modal</app-button>
+  <app-button (click)="downloadExcel()">Download excel</app-button>
 </div>
 <h2 class="font-bold text-center" *ngIf="isLoad">Loading...</h2>
 <div *ngIf="!isLoad">
