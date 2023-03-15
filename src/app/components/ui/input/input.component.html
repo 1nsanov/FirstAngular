@@ -1,19 +1,26 @@
 <div class="input_wrapper">
-  <div class="input-label" [ngClass]="{'input-label-focus' : inputService.state$.value}">
+  <div class="input-label"
+       [ngClass]="{
+         'input-label-focus' : service.state$.value,
+         'focus-label' : service.isFocus$.value
+       }"
+  >
     {{label}}
   </div>
-  <div [innerHTML]="svg" class="input-icon">
+  <div [id]="service.id" [innerHTML]="service.svg" class="input-icon">
   </div>
   <input
     class="input-base"
-    [style]="{'padding-left': svg ? '45px' : '20px'}"
-    [ngClass]="{'placeholder' : inputService.state$.value}"
     type="text"
+    [style]="{'padding-left': service.svg ? '45px' : '20px'}"
+    [ngClass]="{
+      'placeholder' : service.state$.value
+    }"
     [value]="value"
     (input)="onInput($event)"
     [placeholder]="placeholder"
-    (focus)="onFocus()"
-    (blur)="onBlur()"
+    (focus)="service.onFocusEvent()"
+    (blur)="service.onBlurEvent(!!value)"
   >
 </div>
 

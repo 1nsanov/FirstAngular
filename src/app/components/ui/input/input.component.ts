@@ -1,6 +1,5 @@
 import {Component, EventEmitter, Input, Output, OnInit} from '@angular/core';
-import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
-import {icons} from "./icons.data";
+import {DomSanitizer} from "@angular/platform-browser";
 import {InputService} from "../../../services/input.service";
 
 @Component({
@@ -15,50 +14,19 @@ export class InputComponent implements OnInit{
   @Input() icon: string;
   @Output() valueChange = new EventEmitter<string>();
 
-  constructor(private sanitizer: DomSanitizer,
-              public inputService: InputService) {
+  constructor(private sanitizer: DomSanitizer) {
   }
 
-  svg: SafeHtml | null = null;
-  el: HTMLElement | null;
-  colorFocus: string = "#3F68CF";
-  colorBlur: string = "#1E1E1E"
-  isLabel: boolean = false;
+  service: InputService;
 
   ngOnInit(): void {
-    if (!this.value) this.value = ""
-    this.initSvg();
+    this.service = new InputService(this.sanitizer, this.icon);
+    if (!this.value) this.value = "";
+    if (!this.label) this.service.blockState();
   }
 
   onInput(e: Event){
-    this.inputService.swicth(true);
+    this.service.swicthState(true);
     this.valueChange.emit((e.target as HTMLInputElement).value)
-  }
-
-  onFocus(){
-    this.changeColorSvg(this.colorFocus)
-    this.inputService.swicth(true);
-  }
-
-  onBlur(){
-    this.changeColorSvg(this.colorBlur)
-    this.inputService.swicth(!!this.value);
-  }
-
-  initSvg() : void{
-    const icon = icons.find(i => i.Name === this.icon);
-    if (icon)
-      this.svg = this.sanitizer.bypassSecurityTrustHtml(icon.Svg);
-    setTimeout(() => {
-      const el = document.getElementById(this.icon);
-      if (el) el.style.transition = "ease-in-out 0.2s"
-      el
-    })
-  }
-
-  changeColorSvg (color: string) : void {
-    const el = document.getElementById(this.icon);
-    if (el) el.style.fill = color;
-    this.isLabel = !this.isLabel;
   }
 }
