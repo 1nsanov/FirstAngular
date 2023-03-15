@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, Output, OnInit} from '@angular/core';
 import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
 import {icons} from "./icons.data";
+import {InputService} from "../../../services/input.service";
 
 @Component({
   selector: 'app-input',
@@ -9,18 +10,20 @@ import {icons} from "./icons.data";
 })
 export class InputComponent implements OnInit{
   @Input() value: string
-  @Input() placeholder: string
+  @Input() placeholder: string = ""
   @Input() label: string;
   @Input() icon: string;
   @Output() valueChange = new EventEmitter<string>();
 
-  constructor(private sanitizer: DomSanitizer) {
+  constructor(private sanitizer: DomSanitizer,
+              public inputService: InputService) {
   }
 
   svg: SafeHtml | null = null;
   el: HTMLElement | null;
-  colorFocus: string = "#B6E5EE";
+  colorFocus: string = "#3F68CF";
   colorBlur: string = "#1E1E1E"
+  isLabel: boolean = false;
 
   ngOnInit(): void {
     if (!this.value) this.value = ""
@@ -28,7 +31,18 @@ export class InputComponent implements OnInit{
   }
 
   onInput(e: Event){
+    this.inputService.swicth(true);
     this.valueChange.emit((e.target as HTMLInputElement).value)
+  }
+
+  onFocus(){
+    this.changeColorSvg(this.colorFocus)
+    this.inputService.swicth(true);
+  }
+
+  onBlur(){
+    this.changeColorSvg(this.colorBlur)
+    this.inputService.swicth(!!this.value);
   }
 
   initSvg() : void{
@@ -45,5 +59,6 @@ export class InputComponent implements OnInit{
   changeColorSvg (color: string) : void {
     const el = document.getElementById(this.icon);
     if (el) el.style.fill = color;
+    this.isLabel = !this.isLabel;
   }
 }
