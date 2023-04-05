@@ -5,10 +5,13 @@
              [placeholder]="'Введи текст...'"
              [icon]="'icon-person'"/>
 
-  <app-input [label]="'Заголовок'"/>
+  <app-input [(value)]="valueSearch"
+             [label]="'Заголовок'"/>
 
-  <app-input [placeholder]="'Введи текст...'"
+  <app-input [(value)]="valueSearch"
+             [placeholder]="'Введи текст...'"
              [icon]="'icon-person'"/>
+  <app-input [(value)]="valueSearch"/>
 </div>
 Value: {{valueSearch}}
 

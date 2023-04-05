@@ -1,7 +1,6 @@
 import {BehaviorSubject} from 'rxjs'
 import {icons} from "../components/ui/input/icons.data";
 import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
-import {createUrlTreeFromSnapshot} from "@angular/router";
 
 export class InputService {
   state$ = new BehaviorSubject<boolean>(false)
