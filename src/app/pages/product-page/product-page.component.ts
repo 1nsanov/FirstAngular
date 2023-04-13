@@ -13,10 +13,10 @@ interface IPassportDto{
 @Component({
   selector: 'app-product-page',
   templateUrl: './product-page.component.html',
-  styleUrls: ['./product-page.component.css']
+  styleUrls: ['./product-page.component.scss']
 })
 export class ProductPageComponent {
-  title = 'First angular';
+  title = 'fleetfinder';
 
   products: IProduct[] = [];
   isLoad: boolean = false;

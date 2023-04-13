@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'Ostrich Sans';
+  src: url('/assets/fonts/OstrichSans-Heavy.otf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+  background: var(--background);
+}
+
+input:focus{
+  outline: none;
+}
